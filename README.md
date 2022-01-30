@@ -25,8 +25,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/uttamsharma446/Job-listing)
-- Live Site URL: [Add live site URL here](https://job-listing1.netlify.app/)
+- Solution URL: (https://github.com/uttamsharma446/Job-listing)
+- Live Site URL: (https://job-listing1.netlify.app/)
 
 ### Built with
 
@@ -41,6 +41,6 @@ Users should be able to:
 ## Author
 
 - Website - [Uttam Sharma](https://www.your-site.com)
-- Frontend Mentor - [@uttamsharma446](https://www.frontendmentor.io/profile/yourusername)
+- Frontend Mentor - [@uttamsharma446](https://www.frontendmentor.io/profile/@uttamsharma446)
 
 
