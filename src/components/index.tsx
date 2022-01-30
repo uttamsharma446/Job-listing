@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: "20px 40px",
     position: "relative",
     backgroundColor: "#fff",
+    boxShadow: "1px 1px 14px 1px #c7c7c9",
     borderRadius: "5px",
     [theme.breakpoints.down("md")]: {
       flexDirection: "column",
@@ -103,7 +104,7 @@ const useStyles = makeStyles((theme: Theme) => ({
       backgroundColor: " hsl(180, 31%, 95%)",
       color: "#579e9e",
       padding: "10px",
-      borderRadius: "8px",
+      borderRadius: "5px",
       transition: "0.5s",
       "&:hover": {
         cursor: "pointer",
@@ -120,6 +121,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 interface dataType {
+  id: number;
   company: string;
   logo: string;
   isNew: boolean;

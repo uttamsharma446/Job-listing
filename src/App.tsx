@@ -1,8 +1,9 @@
 import { makeStyles } from "@mui/styles";
 import { Theme } from "@mui/system";
-import React from "react";
-import { Card } from "./components/Card";
-import data from "./utils/data.json";
+import React, { useEffect, useState } from "react";
+import { Card } from "./components";
+import { Filter } from "./components/Filter";
+import allData from "./utils/data.json";
 
 const useStyles = makeStyles((theme: Theme) => ({
   header: {
@@ -15,8 +16,12 @@ const useStyles = makeStyles((theme: Theme) => ({
       backgroundImage: "url(/images/bg-header-mobile.svg)",
     },
   },
-  container: {
-    padding: "3% 10%",
+  filter: {
+    padding: "0% 10%",
+    marginTop: "-35px",
+  },
+  main: {
+    padding: "5% 10%",
     [theme.breakpoints.down("md")]: {},
   },
   box: {
@@ -30,18 +35,59 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 function App() {
-  const classes = useStyles();
+  const [data, setData] = useState(allData);
+  const [filterData, setFilterData] = useState<string[]>([]);
+  const classes = useStyles({ isFilter: filterData.length > 0 });
   const handleClick = (value: string) => {
-    console.log(value);
+    if (!filterData.includes(value)) {
+      setFilterData((prev) => {
+        return [...prev, value];
+      });
+    }
   };
+  const handleCancel = (value: string) => {
+    let preValue = filterData;
+    console.log(preValue);
+    let newData = preValue.filter((v) => v !== value);
+    console.log(newData);
+    setFilterData(newData);
+  };
+  useEffect(() => {
+    if (filterData.length > 0) {
+      var newArr = data;
+      var array = [];
+      for (var i = 0; i < data.length; i++) {
+        if (
+          filterData.some((f) => newArr[i].tools.includes(f)) ||
+          filterData.some((f) => newArr[i].languages.includes(f)) ||
+          filterData.some((f) => newArr[i].level === f) ||
+          filterData.some((f) => newArr[i].role === f)
+        ) {
+          array.push(newArr[i]);
+        }
+      }
+      setData(array);
+    } else {
+      setData(allData);
+    }
+  }, [filterData]);
   return (
     <>
       <header className={classes.header}></header>
       <main>
-        <div className={classes.container}>
-          {data.map((d) => {
+        <div className={classes.filter}>
+          {filterData.length > 0 && (
+            <Filter
+              handleCancel={(d: string) => handleCancel(d)}
+              handleClear={() => setFilterData([])}
+              data={filterData}
+            />
+          )}
+        </div>
+        <div className={classes.main}>
+          {data.map((d, index) => {
             return (
-              <div className={classes.card}>
+              <div key={index} className={classes.card}>
                 <Card data={d} handleClick={handleClick} />
               </div>
             );
