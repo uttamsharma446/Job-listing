@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     flexDirection: "column",
     marginLeft: "30px",
-    "& h3": {
+    "& h1": {
       fontSize: "0.9rem",
     },
     "& div": {
@@ -164,14 +164,14 @@ export const Card: React.FC<Props> = ({
       }`}
     >
       <div className={classes.logo}>
-        <img width="90%" height="90%" src={logo} alt={company} />
+        <img src={logo} alt={company} />
       </div>
       <div className={classes.company}>
         <div className={classes.title}>
           <span>{company}</span> {isNew && <span>new!</span>}{" "}
           {featured && <span>featured</span>}
         </div>
-        <h3>{position}</h3>
+        <h1>{position}</h1>
         <ul className={classes.companyFooter}>
           <li>{postedAt} </li> <li> {contract} </li>
           <li>{location}</li>

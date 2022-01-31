@@ -1,7 +1,7 @@
 import { makeStyles } from "@mui/styles";
 import { Theme } from "@mui/system";
 import React, { useEffect, useState } from "react";
-import { Card } from "./components";
+import { Card } from "./components/Card";
 import { Filter } from "./components/Filter";
 import allData from "./utils/data.json";
 
